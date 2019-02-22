@@ -1,0 +1,60 @@
+{
+  "name": "RNBase",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Felipe de Souza Paiva",
+  "license": "MIT",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "ENVFILE=.env.staging react-native run-android",
+    "android:build": "react-native run-android --variant=release",
+    "android:release": "cd android && ./gradlew assembleRelease && cd ..",
+    "android:clean": "cd android/ && ./gradlew clean && cd .. && rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-*",
+    "ios": "ENVFILE=.env.staging react-native run-ios",
+    "ios:build": "react-native run-android --variant=release",
+    "ios:release": "cd android && ./gradlew assembleRelease && cd ..",
+    "ios:clean": "cd android/ && ./gradlew clean && cd .. && rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-*",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "prettier": "^1.16.4",
+    "react": "16.6.3",
+    "react-native": "0.58.4",
+    "react-native-config": "^0.11.7",
+    "react-native-gesture-handler": "^1.0.15",
+    "react-native-vector-icons": "^6.3.0",
+    "react-navigation": "^3.2.3",
+    "styled-components": "^4.1.3"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "24.1.0",
+    "cheerio": "^1.0.0-rc.2",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb-base": "7.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-react-native": "^3.2.0",
+    "husky": "^0.14.3",
+    "jest": "24.1.0",
+    "json": "^9.0.6",
+    "lint-staged": "^7.2.0",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-test-renderer": "16.6.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --no-semi",
+      "eslint . --fix",
+      "git add"
+    ]
+  }
+}
